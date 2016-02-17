@@ -17,6 +17,7 @@ def index(request, cat_id):
 
 
 def good(request, good_id):
+    categories = Category.objects.all().order_by('name')
     good_item = Good.objects.get(pk=good_id)
 
-    return render(request, 'good.html', {'good_item': good_item})
+    return render(request, 'good.html', {'good_item': good_item, 'categories': categories})
