@@ -1,39 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
 
-    <title>{{ good_item.name }} :: {{ good_item.category.name }} :: Все для уборки</title>
+{% block title %}
+    {{ good_item.name }} :: {{ good_item.category.name }}
+{% endblock %}
 
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
-
-<header class="site-header">
-    <h1>Все для уборки</h1>
-</header>
-
-
-<aside class="side-nav">
-    <ul>
-
-        {% for category in categories %}
-            <li>
-                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
-            </li>
-        {% endfor %}
-
-    </ul>
-</aside>
-
-
-<main>
+{% block main %}
     <h2>{{ good_item.name }}</h2>
-
     <p class="category">Категория: {{ good_item.category.name }}</p>
-
     <p>{{ good_item.description }}</p>
-
     <p>
 
         {% if not good_item.in_stock %}
@@ -41,17 +15,7 @@
         {% endif %}
 
     </p>
-
     <p class="not-in-stock">
         <a href="/goods/{{ good_item.category.id }}">Назад</a>
     </p>
-
-</main>
-
-
-<footer class="site-footer">
-    <p>все права бла-бла-бла</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

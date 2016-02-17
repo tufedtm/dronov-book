@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
 
-    <title>{{ category.name }} :: Все для уборки</title>
-
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
-
-<header class="site-header">
-    <h1>Все для уборки</h1>
-</header>
+{% block title %}
+    {{ category.name }}
+{% endblock %}
 
 
-<aside class="side-nav">
-    <ul>
-
-        {% for category in categories %}
-            <li>
-                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
-            </li>
-        {% endfor %}
-
-    </ul>
-</aside>
-
-
-<main>
+{% block main %}
     <h2>{{ category.name }}</h2>
 
     <table>
@@ -52,12 +30,4 @@
         {% endfor %}
 
     </table>
-</main>
-
-
-<footer class="site-footer">
-    <p>все права бла-бла-бла</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}
