@@ -1,0 +1,11 @@
+<aside class="side-nav">
+    <ul>
+
+        {% for category in categories %}
+            <li>
+                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</aside>
