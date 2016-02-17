@@ -17,9 +17,9 @@
         {% for good in goods %}
             <tr>
                 <td>
-                    <a href="/goods/good/{{ good.id }}">{{ good.name }}</a>
+                    <a href='{% url 'good' good.id %}'>{{ good.name }}</a>
                 </td>
-                <td class="centered">
+                <td class='centered'>
 
                     {% if good.in_stock %}
                         +

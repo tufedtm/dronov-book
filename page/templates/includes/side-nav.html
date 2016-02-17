@@ -1,9 +1,9 @@
-<aside class="side-nav">
+<aside class='side-nav'>
     <ul>
 
         {% for category in categories %}
             <li>
-                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
+                <a href='{% url 'index' cat_id=category.id %}'>{{ category.name }}</a>
             </li>
         {% endfor %}
 

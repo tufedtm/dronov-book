@@ -6,7 +6,7 @@
 
 {% block main %}
     <h2>{{ good_item.name }}</h2>
-    <p class="category">Категория: {{ good_item.category.name }}</p>
+    <p class='category'>Категория: {{ good_item.category.name }}</p>
     <p>{{ good_item.description }}</p>
     <p>
 
@@ -15,7 +15,7 @@
         {% endif %}
 
     </p>
-    <p class="not-in-stock">
-        <a href="/goods/{{ good_item.category.id }}">Назад</a>
+    <p class='not-in-stock'>
+        <a href='{% url 'index' cat_id=good_item.category.id %}'>Назад</a>
     </p>
 {% endblock %}
