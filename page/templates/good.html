@@ -2,21 +2,56 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ good_item.name }}</title>
+
+    <title>{{ good_item.name }} :: {{ good_item.category.name }} :: Все для уборки</title>
+
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-<h1>{{ good_item.name }}</h1>
-<p>Категория: {{ good_item.category }}</p>
-<p>{{ good_item.description }}</p>
-<p>
-    {% if not good_item.in_stock %}
-        Нет в наличии!
-    {% endif %}
-</p>
-<p>
-    <a href="/goods/{{ good_item.category.id }}">Назад</a>
-</p>
+<header class="site-header">
+    <h1>Все для уборки</h1>
+</header>
+
+
+<aside class="side-nav">
+    <ul>
+
+        {% for category in categories %}
+            <li>
+                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</aside>
+
+
+<main>
+    <h2>{{ good_item.name }}</h2>
+
+    <p class="category">Категория: {{ good_item.category.name }}</p>
+
+    <p>{{ good_item.description }}</p>
+
+    <p>
+
+        {% if not good_item.in_stock %}
+            Нет в наличии!
+        {% endif %}
+
+    </p>
+
+    <p class="not-in-stock">
+        <a href="/goods/{{ good_item.category.id }}">Назад</a>
+    </p>
+
+</main>
+
+
+<footer class="site-footer">
+    <p>все права бла-бла-бла</p>
+</footer>
 
 </body>
 </html>

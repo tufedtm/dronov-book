@@ -2,47 +2,62 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ category.name }}</title>
+
+    <title>{{ category.name }} :: Все для уборки</title>
+
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-<h1>Список товаров</h1>
-<h2>Категории:</h2>
-<ul>
+<header class="site-header">
+    <h1>Все для уборки</h1>
+</header>
 
-    {% for category in categories %}
-        <li>
-            <a href="/goods/{{ category.id }}">{{ category.name }}</a>
-        </li>
-    {% endfor %}
 
-</ul>
+<aside class="side-nav">
+    <ul>
 
-<h2>Товары:</h2>
+        {% for category in categories %}
+            <li>
+                <a href="/goods/{{ category.id }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
 
-<table>
-    <tr>
-        <th>Название</th>
-        <th>Есть в наличии</th>
-    </tr>
+    </ul>
+</aside>
 
-    {% for good in goods %}
+
+<main>
+    <h2>{{ category.name }}</h2>
+
+    <table>
         <tr>
-            <td>
-                <a href="/goods/good/{{ good.id }}">{{ good.name }}</a>
-            </td>
-            <td>
-
-                {% if good.in_stock %}
-                    +
-                {% endif %}
-
-            </td>
+            <th>Название</th>
+            <th>Есть в наличии</th>
         </tr>
-    {% endfor %}
+
+        {% for good in goods %}
+            <tr>
+                <td>
+                    <a href="/goods/good/{{ good.id }}">{{ good.name }}</a>
+                </td>
+                <td class="centered">
+
+                    {% if good.in_stock %}
+                        +
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+</main>
 
 
-</table>
+<footer class="site-footer">
+    <p>все права бла-бла-бла</p>
+</footer>
 
 </body>
 </html>
