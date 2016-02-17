@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField('Название', max_length=30, unique=True)
-    description = models.TextField()
+    description = models.TextField('Описание')
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Good(models.Model):
     name = models.CharField('Название', max_length=50, unique=True)
-    description = models.TextField()
+    description = models.TextField('Описание')
     in_stock = models.BooleanField('В наличии', default=True, db_index=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
