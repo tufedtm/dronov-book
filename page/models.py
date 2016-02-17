@@ -44,6 +44,9 @@ class BlogArticle(models.Model):
     pubdate = models.DateField()
     update = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
