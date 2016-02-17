@@ -8,7 +8,7 @@ class Category(models.Model):
     name = models.CharField('Название', max_length=30, unique=True)
     description = models.TextField('Описание')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
@@ -22,7 +22,7 @@ class Good(models.Model):
     in_stock = models.BooleanField('В наличии', default=True, db_index=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
-    def __str__(self):
+    def __unicode__(self):
         s = self.name
         if not self.in_stock:
             s += ' (нет в наличии)'
@@ -44,7 +44,7 @@ class BlogArticle(models.Model):
     pubdate = models.DateField()
     update = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
