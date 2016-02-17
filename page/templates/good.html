@@ -2,9 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ good_item.name }}</title>
 </head>
 <body>
+
+<h1>{{ good_item.name }}</h1>
+<p>Категория: {{ good_item.category }}</p>
+<p>{{ good_item.description }}</p>
+<p>
+    {% if not good_item.in_stock %}
+        Нет в наличии!
+    {% endif %}
+</p>
+<p>
+    <a href="/goods/{{ good_item.category.id }}">Назад</a>
+</p>
 
 </body>
 </html>
