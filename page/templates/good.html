@@ -16,6 +16,6 @@
 
     </p>
     <p class='not-in-stock'>
-        <a href='{% url 'index' cat_id=good_item.category.id %}'>Назад</a>
+        <a href='{% url 'index' cat_id=good_item.category.id %}?page={{ page_num }}'>Назад</a>
     </p>
 {% endblock %}

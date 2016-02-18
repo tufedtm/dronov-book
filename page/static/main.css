@@ -71,3 +71,20 @@ p.not-in-stock{
     font-size: smaller;
     font-style: italic;
 }
+
+
+#pagination{
+    margin-top: 20px;
+}
+
+#prev-page{
+    float: left;
+}
+
+#num-pages{
+    text-align: center;
+}
+
+#next-page{
+    float: right;
+}
