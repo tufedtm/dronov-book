@@ -1,9 +1,19 @@
+from django.views.generic.base import ContextMixin
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from models import *
 
 
-class GoodListView(ListView):
+class CategoryListMixin(ContextMixin):
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListMixin, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.order_by('name')
+
+        return context
+
+
+class GoodListView(ListView, CategoryListMixin):
     template_name = 'index.html'
     paginate_by = 2
 
@@ -19,17 +29,16 @@ class GoodListView(ListView):
         return super(GoodListView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        contex = super(GoodListView, self).get_context_data(**kwargs)
-        contex['categories'] = Category.objects.order_by('name')
-        contex['category'] = self.category
+        context = super(GoodListView, self).get_context_data(**kwargs)
+        context['category'] = self.category
 
-        return contex
+        return context
 
     def get_queryset(self):
         return Good.objects.filter(category=self.category).order_by('name')
 
 
-class GoodDetailView(DetailView):
+class GoodDetailView(DetailView, CategoryListMixin):
     template_name = 'good.html'
     model = Good
     pk_url_kwarg = 'good_id'
@@ -41,7 +50,5 @@ class GoodDetailView(DetailView):
             context['page_num'] = self.request.GET['page']
         except KeyError:
             context['page_num'] = 1
-
-        context['categories'] = Category.objects.order_by('name')
 
         return context
