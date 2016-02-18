@@ -14,10 +14,10 @@
             <th>Есть в наличии</th>
         </tr>
 
-        {% for good in goods %}
+        {% for good in object_list %}
             <tr>
                 <td>
-                    <a href='{% url 'good' good.id %}?page={{ goods.number }}'>{{ good.name }}</a>
+                    <a href='{% url 'good' good.id %}?page={{ page_obj.number }}'>{{ good.name }}</a>
                 </td>
                 <td class='centered'>
 
@@ -31,40 +31,39 @@
 
     </table>
 
-    {% if goods.paginator.num_pages > 1 %}
+    {% if paginator.num_pages > 1 %}
         <div id="pagination">
 
-            {% if goods.has_previous %}
+            {% if page_obj.has_previous %}
                 <div id="prev-page">
-                    <a href="{% url 'index' cat_id=category.pk %}?page={{ goods.previous_page_number }}">&lt;</a>
+                    <a href="{% url 'index' cat_id=category.pk %}?page={{ page_obj.previous_page_number }}">&lt;</a>
                 </div>
             {% endif %}
 
-            {% if goods.has_next %}
+            {% if page_obj.has_next %}
                 <div id="next-page">
-                    <a href="{% url 'index' cat_id=category.pk %}?page={{ goods.next_page_number }}">&gt;</a>
+                    <a href="{% url 'index' cat_id=category.pk %}?page={{ page_obj.next_page_number }}">&gt;</a>
                 </div>
             {% endif %}
 
             <div id="num-pages">
-                {% for page_num in goods.paginator.page_range %}
+                {% for page_num in paginator.page_range %}
 
                     {% if not forloop.first %}
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                     {% endif %}
 
-                    {% if goods.number != page_num %}
+                    {% if page_obj.number != page_num %}
                         <a href="{% url 'index' cat_id=category.pk %}?page={{ page_num }}">
                     {% endif %}
 
                     {{ page_num }}
 
-                    {% if goods.number != page_num %}
+                    {% if page_obj.number != page_num %}
                         </a>
                     {% endif %}
 
                 {% endfor %}
-
             </div>
 
         </div>

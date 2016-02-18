@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ good_item.name }} :: {{ good_item.category.name }}
+    {{ good.name }} :: {{ good.category.name }}
 {% endblock %}
 
 {% block main %}
-    <h2>{{ good_item.name }}</h2>
-    <p class='category'>Категория: {{ good_item.category.name }}</p>
-    <p>{{ good_item.description }}</p>
+    <h2>{{ good.name }}</h2>
+    <p class='category'>Категория: {{ good.category.name }}</p>
+    <p>{{ good.description }}</p>
     <p>
 
-        {% if not good_item.in_stock %}
+        {% if not good.in_stock %}
             Нет в наличии!
         {% endif %}
 
     </p>
     <p class='not-in-stock'>
-        <a href='{% url 'index' cat_id=good_item.category.id %}?page={{ page_num }}'>Назад</a>
+        <a href='{% url 'index' cat_id=good.category.id %}?page={{ page_num }}'>Назад</a>
     </p>
 {% endblock %}
