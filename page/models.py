@@ -20,7 +20,7 @@ class Good(models.Model):
     name = models.CharField('Название', max_length=50, unique=True)
     description = models.TextField('Описание')
     in_stock = models.BooleanField('В наличии', default=True, db_index=True)
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, verbose_name='Категория', null=True, blank=True, on_delete=models.SET_NULL)
 
     def __unicode__(self):
         s = self.name

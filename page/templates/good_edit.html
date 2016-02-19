@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Правка товара :: {{ good.name }} :: {{ good.category.name }}
+{% endblock %}
+
+{% block main %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить">
+    </form>
+
+    <p>
+        <a href="{% url 'index' cat_id=good.category.id %}?page={{ page_num }}">Назад</a>
+    </p>
+
+{% endblock %}

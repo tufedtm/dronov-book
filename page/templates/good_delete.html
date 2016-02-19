@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ good.name }} :: {{ good.category.name }}
+    Удаление товара :: {{ good.name }} :: {{ good.category.name }}
 {% endblock %}
 
 {% block main %}
@@ -15,6 +15,12 @@
         {% endif %}
 
     </p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+    </form>
+
     <p>
         <a href='{% url 'index' cat_id=good.category.id %}?page={{ page_num }}'>Назад</a>
     </p>
