@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+    <img src="{{ good.thumbnail.url }}" width="{{ good.thumbnail.width }}" height="{{ good.thumbnail.height }}" alt="{{ good.name }}">
     <h2>{{ good.name }}</h2>
     <p class='category'>Категория: {{ good.category.name }}</p>
     <p>{{ good.description }}</p>

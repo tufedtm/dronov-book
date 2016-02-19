@@ -8,10 +8,6 @@
 {% block main %}
     <h2>{{ category.name }}</h2>
 
-    <p>
-        <a href="{% url 'good_add' cat_id=category.id %}?page={{ page_obj.number }}">Добавить товар</a>
-    </p>
-
     <table>
         <tr>
             <th>Название</th>
@@ -31,12 +27,6 @@
                         +
                     {% endif %}
 
-                </td>
-                <td class="centered">
-                    <a href="{% url 'good_edit' good_id=good.id %}?page={{ page_obj.number }}">Изменить</a>
-                </td>
-                <td class="centered">
-                    <a href="{% url 'good_delete' good_id=good.id %}?page={{ page_obj.number }}">Удалить</a>
                 </td>
             </tr>
         {% endfor %}

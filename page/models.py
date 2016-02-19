@@ -1,5 +1,4 @@
 # coding=utf-8
-
 from __future__ import unicode_literals
 from django.db import models
 
@@ -21,6 +20,7 @@ class Good(models.Model):
     description = models.TextField('Описание')
     in_stock = models.BooleanField('В наличии', default=True, db_index=True)
     category = models.ForeignKey(Category, verbose_name='Категория', null=True, blank=True, on_delete=models.SET_NULL)
+    thumbnail = models.ImageField('Фото', upload_to='goods/thumbnails/%Y-%m/%d', null=True)
 
     def __unicode__(self):
         s = self.name
@@ -33,6 +33,18 @@ class Good(models.Model):
             return '+'
         else:
             return ''
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        try:
+            this_item = Good.objects.get(pk=self.id)
+
+            if this_item.thumbnail != self.thumbnail:
+                this_item.thumbnail.delete(save=False)
+        finally:
+            pass
+
+        super(Good, self).save()
 
     class Meta:
         verbose_name = 'Товар'
