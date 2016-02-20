@@ -21,6 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^goods/', include('page.urls')),
+    url(r'^(?P<url>.*/)$', 'django.contrib.flatpages.views.flatpage')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

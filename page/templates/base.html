@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load flatpages %}
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -16,6 +17,15 @@
 <header class='site-header'>
     <h1>Все для уборки</h1>
 </header>
+
+
+
+{% get_flatpages as flatpages %}
+
+{% for flatpage in flatpages %}
+    <a href="{{ flatpage.url }}">{{ flatpage.title }}</a>
+    <br>
+{% endfor %}
 
 
 {% include 'includes/side-nav.html' %}
