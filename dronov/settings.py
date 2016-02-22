@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
+    'easy_thumbnails',
+
     'page'
 ]
 
@@ -128,3 +130,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# easy_thumbnails
+THUMBNAIL_BASEDIR = 'thumbnails'
+THUMBNAIL_ALIASES = {
+    'page.Good.thumbnail': {
+        'first': {
+            'size': (200, 0)
+        },
+        'second': {
+            'size': (300, 0),
+            'crop': ','
+        },
+        'third': {
+            'size': (200, 0),
+            'crop': 'smart',
+            'sharpen': True
+        }
+    }
+}

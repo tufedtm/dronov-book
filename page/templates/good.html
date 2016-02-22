@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %}
     {{ good.name }} :: {{ good.category.name }}
 {% endblock %}
 
 {% block main %}
-    <img src="{{ good.thumbnail.url }}" width="{{ good.thumbnail.width }}" height="{{ good.thumbnail.height }}" alt="{{ good.name }}">
+    <a href="{{ good.thumbnail.url }}" target="_blank">
+        <img src="{{ good.thumbnail|thumbnail_url:"third" }}" alt="{{ good.name }}">
+    </a>
     <h2>{{ good.name }}</h2>
     <p class='category'>Категория: {{ good.category.name }}</p>
     <p>{{ good.description }}</p>
