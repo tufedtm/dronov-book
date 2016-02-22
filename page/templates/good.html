@@ -19,6 +19,19 @@
         {% endif %}
 
     </p>
+
+    {% if good.tags.names.count > 0 %}
+        <p>
+            Теги:
+            {% for name in good.tags.names %}
+                {% if not forloop.first %}
+                    ,
+                {% endif %}
+                <a href="{% url 'index' cat_id=good.category.id %}?tag={{ name }}">{{ name }}</a>
+            {% endfor %}
+        </p>
+    {% endif %} 
+
     <p>
         <a href='{% url 'index' cat_id=good.category.id %}?page={{ page_num }}'>Назад</a>
     </p>
